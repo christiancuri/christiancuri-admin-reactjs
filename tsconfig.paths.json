@@ -2,8 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@services/*": ["./src/shared/services/*"],
-      "@interfaces/*": ["./src/shared/interfaces/*"]
+      "@services/*": ["./src/services/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@components/*": ["./src/components/*"],
+      "@services": ["./src/services"],
+      "@interfaces": ["./src/interfaces"],
+      "@components": ["./src/components"]
     }
   }
 }
