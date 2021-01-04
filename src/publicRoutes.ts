@@ -6,4 +6,9 @@ export const publicRoutes = [
     path: '/',
     component: React.lazy(() => import('./pages/Home')),
   },
+  {
+    exact: true,
+    path: '/posts',
+    component: React.lazy(() => import('./pages/Posts')),
+  },
 ];

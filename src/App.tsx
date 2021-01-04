@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { ReactElement, Suspense } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 
 import { createBrowserHistory } from 'history';
@@ -9,19 +9,14 @@ const history = createBrowserHistory();
 
 const LoadingComponent: React.FC = () => <h1>Loading</h1>;
 
-const App: React.FC = () => (
+const App = (): ReactElement => (
   <Router history={history}>
     <Suspense fallback={LoadingComponent}>
       <Switch>
         {publicRoutes &&
           publicRoutes.length &&
-          publicRoutes.map((prop, key) => (
-            <Route
-              {...prop}
-              path={prop.path}
-              key={key}
-              component={prop.component}
-            />
+          publicRoutes.map(({ ...props }, key) => (
+            <Route {...props} path={props.path} key={key} />
           ))}
       </Switch>
     </Suspense>
