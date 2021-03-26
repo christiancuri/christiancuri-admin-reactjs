@@ -4,3 +4,4 @@ export * from './Navbar';
 export * from './Footer';
 export * from './Breadcrumb';
 export * from './Card';
+export * from './PrivateRoute';

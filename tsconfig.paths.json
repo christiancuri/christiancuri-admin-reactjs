@@ -5,9 +5,14 @@
       "@services/*": ["./src/services/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@components/*": ["./src/components/*"],
+      "@config/*": ["./src/config/*"],
+      "@store/*": ["./src/store/*"],
+
       "@services": ["./src/services"],
       "@interfaces": ["./src/interfaces"],
-      "@components": ["./src/components"]
+      "@components": ["./src/components"],
+      "@config": ["./src/config"],
+      "@store": ["./src/store"]
     }
   }
 }

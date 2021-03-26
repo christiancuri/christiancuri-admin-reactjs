@@ -1,9 +1,10 @@
 import React, { ReactElement, Suspense } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 
+import { PrivateRoute } from '@components';
 import { createBrowserHistory } from 'history';
 
-import { publicRoutes } from './publicRoutes';
+import { privateRoutes, publicRoutes } from './routes';
 
 const history = createBrowserHistory();
 
@@ -17,6 +18,12 @@ const App = (): ReactElement => (
           publicRoutes.length &&
           publicRoutes.map(({ ...props }, key) => (
             <Route {...props} path={props.path} key={key} />
+          ))}
+
+        {privateRoutes &&
+          privateRoutes.length &&
+          privateRoutes.map(({ ...props }, key) => (
+            <PrivateRoute {...props} path={props.path} key={key} />
           ))}
       </Switch>
     </Suspense>
