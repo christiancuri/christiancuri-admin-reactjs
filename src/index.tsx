@@ -9,6 +9,7 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/icons.min.css';
 import './assets/css/app.min.css';
+import './styles/index.css';
 // import './assets/css/app-dark.min.css';
 
 ReactDOM.render(

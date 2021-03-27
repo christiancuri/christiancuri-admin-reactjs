@@ -1,10 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import logoDarkSm from '../../assets/images/logo_sm_dark.png';
-import logoSm from '../../assets/images/logo_sm.png';
-import logoDark from '../../assets/images/logo-dark.png';
-import logo from '../../assets/images/logo.png';
+import { UI } from '@config';
 
 const SidebarBadge = (): ReactElement => {
   const [display, setDisplay] = useState(false);
@@ -40,19 +37,10 @@ export const Sidebar = (): ReactElement => {
     <div className="left-side-menu">
       <a href="index.html" className="logo text-center logo-light">
         <span className="logo-lg">
-          <img src={logo} alt="" height="16" />
+          <img src={UI.LOGO_WHITE} alt="" height="50" />
         </span>
         <span className="logo-sm">
-          <img src={logoSm} alt="" height="16" />
-        </span>
-      </a>
-
-      <a href="index.html" className="logo text-center logo-dark">
-        <span className="logo-lg">
-          <img src={logoDark} alt="" height="16" />
-        </span>
-        <span className="logo-sm">
-          <img src={logoDarkSm} alt="" height="16" />
+          <img src={UI.LOGO_WHITE} alt="" height="50" />
         </span>
       </a>
 
