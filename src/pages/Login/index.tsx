@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import { AppConfig, UI } from '@config';
 import styled from 'styled-components';
 
-import { api, Session, User } from '@services';
+import { api, HttpRequest, Session, User } from '@services';
 
 import BackgroundSVG from './background.svg';
 
@@ -17,22 +17,7 @@ const Background = styled.div`
 `;
 
 type ILoginResponse = {
-  token: string;
-  payload: {
-    defaultProfile: {
-      [s: string]: any;
-    };
-    info: {
-      email: string;
-      name: string;
-      type: {
-        id: number;
-        title: string;
-        _id: string;
-      };
-    };
-    _id: string;
-  };
+  accessToken: string;
 };
 
 const LoginPage = (): ReactElement => {
@@ -54,14 +39,11 @@ const LoginPage = (): ReactElement => {
     setLoading(true);
 
     try {
-      const { data: loginRes }: { data: ILoginResponse } = await api.post(
-        '/system/admin/login',
-        {
-          email,
-          password: pwd,
-        },
+      const { accessToken } = await HttpRequest.login<ILoginResponse>(
+        email,
+        pwd,
       );
-      Session.setSession(loginRes.token);
+      Session.setSession(accessToken);
       User.initSession();
       history.push('/');
     } catch (err) {

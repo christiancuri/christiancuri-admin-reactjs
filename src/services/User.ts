@@ -5,13 +5,7 @@ import { IUser } from '@interfaces/user';
 import { HttpRequest } from './Http';
 
 async function fetchUserInfo(): Promise<void> {
-  const userInfo: IUser = {
-    _id: '',
-    name: '',
-    username: '',
-    email: '',
-    bio: '',
-  }; // await HttpRequest.getUserInfo<IUser>();
+  const userInfo = await HttpRequest.getUserInfo<IUser>();
   Store.dispatch(setUser({ ...userInfo }));
 }
 
