@@ -1,27 +1,14 @@
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import Pagination from 'react-paginate';
+import { useHistory } from 'react-router';
 
 import { CustomCard, Layout, Breadcrumb } from '@components';
 import { format, parseISO } from 'date-fns';
 
-import { api } from '@services';
+import { IPost } from '@interfaces';
 
-interface IPost {
-  author: {
-    createdAt: string | Date;
-    name: string;
-    updatedAt: string;
-    _id: string;
-  };
-  createdAt: string;
-  description: string;
-  picture: string;
-  title: string;
-  updatedAt: string | Date;
-  uri: string;
-  _id: string;
-}
+import { api } from '@services';
 
 interface IPostsResponse {
   data: IPost[];
@@ -35,7 +22,7 @@ interface IPostsResponse {
 
 function formatDate(date: string) {
   const isoDate = parseISO(date);
-  return format(isoDate, "dd/MM/yyyy 'as' HH:mm");
+  return format(isoDate, "dd/MM/yyyy 'at' HH:mm");
 }
 
 type PostLineProps = {
@@ -60,6 +47,8 @@ const PostTableLineComponent: React.FC<PostLineProps> = ({ post }) => {
 };
 
 const PostsHome = (): ReactElement => {
+  const history = useHistory();
+
   const [posts, setPosts] = useState<IPost[]>([]);
   const [totalPosts, setTotalPosts] = useState<number>(0);
   const [skip, setSkip] = useState<number>(0);
@@ -104,7 +93,14 @@ const PostsHome = (): ReactElement => {
       <>
         <Row>
           <Col sm="12">
-            <Breadcrumb />
+            <Breadcrumb
+              name="Posts"
+              right={
+                <Button onClick={() => history.push('/new-post')}>
+                  Add new post
+                </Button>
+              }
+            />
           </Col>
         </Row>
         <Row>

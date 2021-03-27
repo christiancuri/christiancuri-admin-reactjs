@@ -53,7 +53,7 @@ export const Userbar = (): ReactElement => {
                     className="rounded-circle"
                   />
                 </span>
-                <span className="account-user-name mt-1.5">
+                <span className="account-user-name pt-1">
                   {userState.user?.name}
                 </span>
               </span>

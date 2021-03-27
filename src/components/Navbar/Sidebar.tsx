@@ -67,42 +67,6 @@ export const Sidebar = (): ReactElement => {
               <span> Posts </span>
             </span>
           </li>
-
-          <li className="side-nav-title side-nav-item">Navigation</li>
-
-          <li className="side-nav-item">
-            <a href="#!" className="side-nav-link">
-              <i className="uil-home-alt" />
-              <span> With arrow </span>
-
-              <span className="menu-arrow" />
-            </a>
-            <ul className="side-nav-second-level">
-              <li>
-                <a href="dashboard-analytics.html">Analytics</a>
-              </li>
-            </ul>
-          </li>
-
-          <li className="side-nav-item">
-            <a href="#!" className="side-nav-link">
-              <i className="uil-home-alt" />
-              <span className="badge badge-success float-right">4</span>
-              <span> Dashboards </span>
-            </a>
-            <ul className="side-nav-second-level">
-              <li>
-                <a href="dashboard-analytics.html">Analytics</a>
-              </li>
-            </ul>
-          </li>
-
-          <li className="side-nav-item">
-            <a href="apps-calendar.html" className="side-nav-link">
-              <i className="uil-calender" />
-              <span> Calendar </span>
-            </a>
-          </li>
         </ul>
         <SidebarBadge />
         <div className="clearfix" />
