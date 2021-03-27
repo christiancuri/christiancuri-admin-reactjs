@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import axios from 'axios';
 
 import * as Session from './Session';
@@ -23,6 +25,12 @@ api.interceptors.response.use(
     if (error && status === 401 && Session.isAuthenticated()) {
       Session.logout();
       window.location.href = '/';
+    } else if (error) {
+      toast.error(
+        error?.response?.data?.message ||
+          error?.response?.data ||
+          error.response,
+      );
     }
     return Promise.reject(error);
   },
