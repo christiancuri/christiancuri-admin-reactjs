@@ -1,3 +1,5 @@
+import { IUser } from '@interfaces';
+
 import * as HttpMethods from './HttpMethods';
 
 /**
@@ -32,4 +34,8 @@ export async function getPost<T>(postId: string): Promise<T> {
 
 export async function getUserInfo<T>(): Promise<T> {
   return HttpMethods.getModule<T>('/user/info').then(({ data }) => data);
+}
+
+export async function updateUserInfo<T>(payload: Partial<IUser>): Promise<T> {
+  return HttpMethods.postModule<T>('/user', payload).then(({ data }) => data);
 }

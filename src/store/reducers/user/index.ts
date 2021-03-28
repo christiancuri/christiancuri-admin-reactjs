@@ -17,7 +17,10 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<IUser>) => ({
       loaded: true,
-      user: action.payload,
+      user: {
+        ...state.user,
+        ...action.payload,
+      },
     }),
   },
 });

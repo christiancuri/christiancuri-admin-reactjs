@@ -48,7 +48,7 @@ export const Userbar = (): ReactElement => {
               <span>
                 <span className="account-user-avatar">
                   <img
-                    src={UI.DEFAULT_USER_PICTURE}
+                    src={userState.user?.picture || UI.DEFAULT_USER_PICTURE}
                     alt=""
                     className="rounded-circle"
                   />

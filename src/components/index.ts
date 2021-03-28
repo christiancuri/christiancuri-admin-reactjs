@@ -5,3 +5,4 @@ export * from './Footer';
 export * from './Breadcrumb';
 export * from './Card';
 export * from './PrivateRoute';
+export * from './MarkdownEditor';

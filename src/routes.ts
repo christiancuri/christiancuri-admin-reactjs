@@ -20,4 +20,19 @@ export const privateRoutes: RouteProps[] = [
     path: '/posts',
     component: React.lazy(() => import('./pages/Posts')),
   },
+  {
+    exact: true,
+    path: '/new-post',
+    component: React.lazy(() => import('./pages/Posts/NewPost')),
+  },
+  {
+    exact: true,
+    path: '/edit-post',
+    component: React.lazy(() => import('./pages/Posts/UpdatePost')),
+  },
+  {
+    exact: true,
+    path: '/account',
+    component: React.lazy(() => import('./pages/Account')),
+  },
 ];

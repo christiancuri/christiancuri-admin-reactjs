@@ -5,3 +5,8 @@
 .side-nav-link {
   cursor: pointer;
 }
+
+.avatar-lg {
+  height: 10rem;
+  width: 10rem;
+}

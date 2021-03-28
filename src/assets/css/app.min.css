@@ -10051,7 +10051,7 @@ body {
 .logo {
   display: block;
   line-height: 70px;
-  width: 260px;
+  width: 200px;
   position: fixed;
   top: 0;
 }
@@ -10073,13 +10073,13 @@ body {
   width: 100%;
 }
 .content-page {
-  margin-left: 260px;
+  margin-left: 200px;
   overflow: hidden;
   padding: 70px 12px 65px;
   min-height: 100vh;
 }
 .left-side-menu {
-  width: 260px;
+  width: 200px;
   z-index: 10;
   background: linear-gradient(135deg, #8f75da 0, #727cf5 60%);
   bottom: 0;
@@ -10261,7 +10261,7 @@ body[data-leftbar-compact-mode='condensed']
   .side-nav-item:hover
   .side-nav-link {
   position: relative;
-  width: 260px;
+  width: 200px;
   color: #fff;
   background: linear-gradient(135deg, #8f75da 0, #727cf5 60%);
 }
@@ -10399,8 +10399,8 @@ body[data-layout-mode='boxed'][data-leftbar-compact-mode='condensed'] .logo {
   body[data-leftbar-compact-mode='scrollable']:not([data-layout='topnav'])
     .left-side-menu {
     position: relative;
-    min-width: 260px;
-    max-width: 260px;
+    min-width: 200px;
+    max-width: 200px;
     padding-top: 0;
   }
   body[data-leftbar-compact-mode='scrollable']:not([data-layout='topnav'])
@@ -10451,8 +10451,8 @@ body[data-layout='detached'] .content-page {
 body[data-layout='detached'] .left-side-menu {
   position: relative;
   background: #fff !important;
-  min-width: 260px;
-  max-width: 260px;
+  min-width: 200px;
+  max-width: 200px;
   -webkit-box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
   box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
   margin-top: 30px;
@@ -10713,7 +10713,7 @@ body[data-leftbar-theme='dark'][data-leftbar-compact-mode='condensed']
   box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
   min-height: 70px;
   position: fixed;
-  left: 260px;
+  left: 200px;
   top: 0;
   right: 0;
   z-index: 1001;
@@ -10723,7 +10723,7 @@ body[data-leftbar-theme='dark'][data-leftbar-compact-mode='condensed']
   height: 70px;
   position: fixed;
   z-index: 1;
-  width: 260px;
+  width: 200px;
   text-align: center;
   top: 0;
   left: 0;
@@ -11110,7 +11110,7 @@ body[data-layout-mode='boxed'][data-layout='topnav'] .navbar-custom {
   position: absolute;
   right: 0;
   color: #98a6ad;
-  left: 260px;
+  left: 200px;
 }
 .footer .footer-links a {
   color: #98a6ad;

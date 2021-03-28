@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/icons.min.css';
 import './assets/css/app.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-markdown-editor-lite/lib/index.css';
 import './styles/index.css';
 // import './assets/css/app-dark.min.css';
 
