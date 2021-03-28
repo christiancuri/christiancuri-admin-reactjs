@@ -23,7 +23,7 @@ export const MarkdownEditorPage = ({
 }: Props): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [mdText, setMdText] = useState<string>(defaultValue?.value || '');
+  const [body, setBody] = useState<string>(defaultValue?.body || '');
   const [title, setTitle] = useState<string>(defaultValue?.title || '');
   const [picture, setPicture] = useState<string>(defaultValue?.picture || '');
   const [description, setDescription] = useState<string>(
@@ -32,7 +32,7 @@ export const MarkdownEditorPage = ({
 
   useEffect(() => {
     if (defaultValue && Object.keys(defaultValue).length) {
-      setMdText(defaultValue.value);
+      setBody(defaultValue.body);
       setTitle(defaultValue.title);
       setPicture(defaultValue.picture);
       setDescription(defaultValue.description);
@@ -44,7 +44,7 @@ export const MarkdownEditorPage = ({
       title,
       picture,
       description,
-      value: mdText,
+      body,
     });
   };
 
@@ -108,7 +108,7 @@ export const MarkdownEditorPage = ({
               <Row>
                 <Col sm="12">
                   <Container>
-                    <MarkdownEditor text={mdText} setText={setMdText} />
+                    <MarkdownEditor text={body} setText={setBody} />
                   </Container>
                 </Col>
               </Row>

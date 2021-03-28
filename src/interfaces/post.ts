@@ -1,22 +1,21 @@
 export type IPost = {
-  author: {
-    createdAt: string | Date;
-    name: string;
-    updatedAt: string;
-    _id: string;
-  };
-  createdAt: string;
-  description: string;
+  _id: string;
+  uri: string;
   picture: string;
   title: string;
-  updatedAt: string | Date;
-  uri: string;
-  _id: string;
+  description: string;
+  body: string;
+  author?: {
+    name?: string;
+    picture?: string;
+  };
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type MarkdownPayload = {
   title: string;
   picture: string;
   description: string;
-  value: string;
+  body: string;
 };

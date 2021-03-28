@@ -23,7 +23,7 @@ export async function getPosts<T>(skip: number, limit: number): Promise<T> {
 }
 
 export async function getPost<T>(postId: string): Promise<T> {
-  return HttpMethods.getModule<T>(`/blog/post/${postId}`).then(
+  return HttpMethods.getModule<T>(`/blog/admin/post/${postId}`).then(
     ({ data }) => data,
   );
 }
