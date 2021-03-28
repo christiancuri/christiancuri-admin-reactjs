@@ -10,6 +10,8 @@ import { IPost } from '@interfaces';
 
 import { api } from '@services';
 
+import { LineIcon } from './styles';
+
 interface IPostsResponse {
   data: IPost[];
   total: number;
@@ -30,17 +32,22 @@ type PostLineProps = {
 };
 
 const PostTableLineComponent: React.FC<PostLineProps> = ({ post }) => {
+  const history = useHistory();
   return (
     <tr>
       <td>{post.title} </td>
       <td>{formatDate(post.createdAt)}</td>
       <td className="table-action">
-        <a href="#!" className="action-icon">
+        <LineIcon
+          className="action-icon pointer"
+          onClick={() => history.push(`/edit-post/${post._id}`)}
+          type="button"
+        >
           <i className="mdi mdi-pencil" />
-        </a>
-        <a href="#!" className="action-icon">
+        </LineIcon>
+        <LineIcon type="button" className="action-icon">
           <i className="mdi mdi-delete" />
-        </a>
+        </LineIcon>
       </td>
     </tr>
   );

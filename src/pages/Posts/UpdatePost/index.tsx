@@ -1,14 +1,24 @@
 import React, { ReactElement } from 'react';
-import { Row } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
-import { Layout } from '@components';
+import { MarkdownEditorPage, Layout } from '@components';
+
+import { MarkdownPayload } from '@interfaces';
 
 export default function UpdatePost(): ReactElement {
+  const history = useHistory();
+
+  const onSave = async (payload: MarkdownPayload): Promise<void> => {
+    //
+  };
+
   return (
     <Layout>
-      <>
-        <Row>Oi</Row>
-      </>
+      <MarkdownEditorPage
+        pageTitle="Update Post"
+        onBack={() => history.push('/')}
+        onSave={onSave}
+      />
     </Layout>
   );
 }

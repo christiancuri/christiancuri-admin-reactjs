@@ -1,35 +1,24 @@
-import React, { ReactElement, useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router';
 
-import { Breadcrumb, CustomCard, Layout, MarkdownEditor } from '@components';
+import { MarkdownEditorPage, Layout } from '@components';
+
+import { MarkdownPayload } from '@interfaces';
 
 export default function NewPost(): ReactElement {
   const history = useHistory();
 
-  const [md, setMd] = useState<string>('');
+  const onSave = async (payload: MarkdownPayload): Promise<void> => {
+    //
+  };
 
   return (
     <Layout>
-      <>
-        <Row>
-          <Col sm="12">
-            <Breadcrumb
-              name="Add new psot"
-              right={
-                <Button onClick={() => history.push('/posts')}>Back</Button>
-              }
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col sm="12">
-            <CustomCard>
-              <MarkdownEditor />
-            </CustomCard>
-          </Col>
-        </Row>
-      </>
+      <MarkdownEditorPage
+        pageTitle="Add new post"
+        onBack={() => history.push('/posts')}
+        onSave={onSave}
+      />
     </Layout>
   );
 }

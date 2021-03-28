@@ -6,3 +6,4 @@ export * from './Breadcrumb';
 export * from './Card';
 export * from './PrivateRoute';
 export * from './MarkdownEditor';
+export * from './MarkdownEditorPage';

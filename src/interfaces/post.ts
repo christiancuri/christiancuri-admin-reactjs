@@ -1,4 +1,4 @@
-export interface IPost {
+export type IPost = {
   author: {
     createdAt: string | Date;
     name: string;
@@ -12,4 +12,11 @@ export interface IPost {
   updatedAt: string | Date;
   uri: string;
   _id: string;
-}
+};
+
+export type MarkdownPayload = {
+  title: string;
+  picture: string;
+  description: string;
+  value: string;
+};

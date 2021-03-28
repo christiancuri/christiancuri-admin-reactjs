@@ -2,18 +2,23 @@ import React, { ReactElement } from 'react';
 import MdEditor from 'react-markdown-editor-lite';
 
 import MarkdownIt from 'markdown-it';
-// import style manually
 
-const mdParser = new MarkdownIt(/* Markdown-it options */);
+const mdParser = new MarkdownIt({});
 
-export const MarkdownEditor = (): ReactElement => {
-  const onChange = ({ html, text }: { html: string; text: string }) => {
-    console.log({ html, text });
+type Props = {
+  text: string;
+  setText(str: string): void;
+};
+
+export const MarkdownEditor = ({ text, setText }: Props): ReactElement => {
+  const onChange = ({ text: mdText }: { html: string; text: string }) => {
+    setText(mdText);
   };
   return (
     <MdEditor
-      style={{ height: '500px' }}
-      renderHTML={text => mdParser.render(text)}
+      style={{ height: '100%' }}
+      value={text}
+      renderHTML={mdText => mdParser.render(mdText)}
       onChange={onChange}
     />
   );
