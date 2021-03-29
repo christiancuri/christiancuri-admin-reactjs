@@ -12,6 +12,12 @@ export async function login<T>(email: string, password: string): Promise<T> {
   );
 }
 
+export async function remoteDeploy<T>(): Promise<T> {
+  return HttpMethods.postModule<T>('/system/trigger-deploy', {}).then(
+    ({ data }) => data,
+  );
+}
+
 /**
  * blog section
  */

@@ -4,8 +4,10 @@ import { selectUser } from '@store';
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { Dropdown } from 'react-bootstrap';
-import { Session } from '@services';
+import { HttpRequest, Session } from '@services';
 import { useHistory } from 'react-router';
+import { confirmAlert } from 'react-confirm-alert';
+import { toast } from 'react-toastify';
 
 const UserDropdown = React.forwardRef(
   (
@@ -39,6 +41,28 @@ export const Userbar = (): ReactElement => {
     window.location.href = '/login';
   };
 
+  const onRemoteDeploy = (): void => {
+    confirmAlert({
+      title: `Remote Deploy`,
+      message: `You wanna deploy the site ?`,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: async () => {
+            await HttpRequest.remoteDeploy();
+            toast.success(`Remote dispatch sent with sucess.`, {
+              autoClose: 1750,
+            });
+          },
+        },
+        {
+          label: 'No',
+          onClick: () => ({}),
+        },
+      ],
+    });
+  };
+
   return (
     <div className="navbar-custom">
       <ul className="list-unstyled topbar-right-menu float-right mb-0">
@@ -60,6 +84,10 @@ export const Userbar = (): ReactElement => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
+              <Dropdown.Item onClick={onRemoteDeploy}>
+                <i className="mdi mdi-access-point-network mr-1"></i>
+                <span>Deploy NextJS</span>
+              </Dropdown.Item>
               <Dropdown.Item onClick={() => history.push('/account')}>
                 <i className="mdi mdi-account-circle mr-1"></i>
                 <span>My account</span>
