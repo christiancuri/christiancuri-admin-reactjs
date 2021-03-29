@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: christiancuri-admin-reactjs
+  name: christiancuri-admin-reactjs
+  namespace: default
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 30
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: christiancuri-admin-reactjs
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: christiancuri-admin-reactjs
+    spec:
+      containers:
+        - env:
+            - name: ENVIRONMENT
+              value: PRODUCTION
+          image: christiancury/christiancuri-admin-reactjs:latest
+          name: christiancuri-admin-reactjs
+          ports:
+            - containerPort: 8080
+      terminationGracePeriodSeconds: 10
+      imagePullSecrets:
+        - name: dockerhub
