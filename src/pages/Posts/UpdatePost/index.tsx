@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { MarkdownEditorPage, Layout } from '@components';
 
@@ -27,7 +28,20 @@ export default function UpdatePost({ match }: Props): ReactElement {
   };
 
   const onSave = async (payload: MarkdownPayload): Promise<void> => {
-    //
+    try {
+      await HttpRequest.updatePost<IPost>({
+        ...post,
+        ...payload,
+      });
+      toast.success(`Post updated with success`);
+    } catch (error) {
+      toast.error(
+        error?.response?.data?.message ||
+          error?.response?.data ||
+          error?.response ||
+          'Failed to update post',
+      );
+    }
   };
 
   useEffect(() => {
@@ -38,7 +52,7 @@ export default function UpdatePost({ match }: Props): ReactElement {
     <Layout>
       <MarkdownEditorPage
         pageTitle="Update Post"
-        onBack={() => history.push('/')}
+        onBack={() => history.push('/posts')}
         onSave={onSave}
         defaultValue={post}
       />

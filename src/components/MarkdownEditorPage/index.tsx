@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { toast, ToastOptions } from 'react-toastify';
 
 import { MarkdownPayload } from '@interfaces';
 
@@ -40,6 +41,12 @@ export const MarkdownEditorPage = ({
   }, [defaultValue]);
 
   const handleOnSave = () => {
+    const options: ToastOptions = { autoClose: 1500 };
+    if (!title) return toast.error(`Missing title`, options);
+    if (!picture) return toast.error(`Missing picture`, options);
+    if (!description) return toast.error(`Missing description`, options);
+    if (!body) return toast.error(`Missing body`, options);
+
     onSave({
       title,
       picture,

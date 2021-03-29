@@ -1,14 +1,16 @@
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import { confirmAlert } from 'react-confirm-alert';
 import Pagination from 'react-paginate';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 
 import { CustomCard, Layout, Breadcrumb } from '@components';
 import { format, parseISO } from 'date-fns';
 
 import { IPost } from '@interfaces';
 
-import { api } from '@services';
+import { api, HttpRequest } from '@services';
 
 import { LineIcon } from './styles';
 
@@ -29,23 +31,49 @@ function formatDate(date: string) {
 
 type PostLineProps = {
   post: IPost;
+  removePost(postId: string): void;
 };
 
-const PostTableLineComponent: React.FC<PostLineProps> = ({ post }) => {
+const PostTableLineComponent: React.FC<PostLineProps> = ({
+  post,
+  removePost,
+}) => {
   const history = useHistory();
+
+  const onDelete = () => {
+    confirmAlert({
+      title: `Delete`,
+      message: `You wanna delete post ${post.title} ?`,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: async () => {
+            await HttpRequest.deletePost<void>(post._id);
+            toast.success(`Post ${post.title} deleted`, { autoClose: 1750 });
+            removePost(post._id);
+          },
+        },
+        {
+          label: 'No',
+          onClick: () => ({}),
+        },
+      ],
+    });
+  };
+
   return (
     <tr>
       <td>{post.title} </td>
       <td>{formatDate(post.createdAt)}</td>
       <td className="table-action">
         <LineIcon
+          type="button"
           className="action-icon pointer"
           onClick={() => history.push(`/edit-post/${post._id}`)}
-          type="button"
         >
           <i className="mdi mdi-pencil" />
         </LineIcon>
-        <LineIcon type="button" className="action-icon">
+        <LineIcon type="button" className="action-icon" onClick={onDelete}>
           <i className="mdi mdi-delete" />
         </LineIcon>
       </td>
@@ -82,6 +110,10 @@ const PostsHome = (): ReactElement => {
     const pages = postsData.total / postsData.pagination.limit;
     if (pages !== totalPages) setTotalPages(pages);
   }, []);
+
+  const removePost = (postId: string): void => {
+    setPosts(posts.filter(p => p._id !== postId));
+  };
 
   const handlePaginate = useCallback(
     async data => {
@@ -124,7 +156,13 @@ const PostsHome = (): ReactElement => {
                 <tbody>
                   {posts.length
                     ? posts.map((post: IPost, key) => {
-                        return <PostTableLineComponent post={post} key={key} />;
+                        return (
+                          <PostTableLineComponent
+                            key={key}
+                            post={post}
+                            removePost={removePost}
+                          />
+                        );
                       })
                     : null}
                 </tbody>

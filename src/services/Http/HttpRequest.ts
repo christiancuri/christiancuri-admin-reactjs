@@ -1,4 +1,4 @@
-import { IUser } from '@interfaces';
+import { IPost, IUser } from '@interfaces';
 
 import * as HttpMethods from './HttpMethods';
 
@@ -24,6 +24,26 @@ export async function getPosts<T>(skip: number, limit: number): Promise<T> {
 
 export async function getPost<T>(postId: string): Promise<T> {
   return HttpMethods.getModule<T>(`/blog/admin/post/${postId}`).then(
+    ({ data }) => data,
+  );
+}
+
+export async function updatePost<T>(payload: Partial<IPost>): Promise<T> {
+  return HttpMethods.putModule<T>('/blog/admin/post', payload).then(
+    ({ data }) => data,
+  );
+}
+
+export async function createPost<T>(
+  payload: Pick<IPost, 'body' | 'description' | 'picture' | 'title'>,
+): Promise<T> {
+  return HttpMethods.postModule<T>('/blog/admin/post', payload).then(
+    ({ data }) => data,
+  );
+}
+
+export async function deletePost<T>(postId: string): Promise<T> {
+  return HttpMethods.deleteModule<T>(`/blog/admin/post/${postId}`).then(
     ({ data }) => data,
   );
 }

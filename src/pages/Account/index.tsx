@@ -38,14 +38,14 @@ export default function Account(): ReactElement {
         [fieldName]: value,
       });
       dispath(setUser(updatedUser));
-      toast.info(`${fieldName} saved.`, {
+      toast.success(`${fieldName} saved.`, {
         autoClose: 1500,
       });
     } catch (error) {
       toast.error(
-        error.response.data.message ||
-          error.response.data ||
-          error.response ||
+        error?.response?.data?.message ||
+          error?.response?.data ||
+          error?.response ||
           'Failed to update',
       );
     } finally {
