@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import * as Session from './Session';
 
-const baseURL = 'http://localhost:5000/api';
+const baseURL = 'https://christiancuri.dev/api';
 
 export const api = axios.create({
   baseURL,
